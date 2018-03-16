@@ -6,14 +6,16 @@ public class Manager {
 
     private int id;
     private String name;
+    private Team team;
     private GregorianCalendar hired;
     private int salary;
 
     public Manager() {
     }
 
-    public Manager(String name, GregorianCalendar hired, int salary) {
+    public Manager(String name, Team team, GregorianCalendar hired, int salary) {
         this.name = name;
+        this.team = team;
         this.hired = hired;
         this.salary = salary;
     }
@@ -32,6 +34,14 @@ public class Manager {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     public GregorianCalendar getHired() {
