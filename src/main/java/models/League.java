@@ -12,6 +12,9 @@ public class League {
     private GregorianCalendar seasonend;
     private Set<Team> teams;
 
+    public League() {
+    }
+
     public League(String name, GregorianCalendar seasonstart, GregorianCalendar seasonend) {
         this.name = name;
         this.seasonstart = seasonstart;
