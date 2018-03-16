@@ -1,9 +1,14 @@
 package models;
 
+
+
+import javax.persistence.*;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="leagues")
 public class League {
 
     private int id;
@@ -22,6 +27,9 @@ public class League {
         this.teams = new HashSet<Team>();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -30,6 +38,7 @@ public class League {
         this.id = id;
     }
 
+    @Column(name="league_name")
     public String getName() {
         return name;
     }
@@ -38,6 +47,7 @@ public class League {
         this.name = name;
     }
 
+    @Column(name="season_start")
     public GregorianCalendar getSeasonstart() {
         return seasonstart;
     }
@@ -46,6 +56,7 @@ public class League {
         this.seasonstart = seasonstart;
     }
 
+    @Column(name="season_end")
     public GregorianCalendar getSeasonend() {
         return seasonend;
     }
@@ -54,6 +65,7 @@ public class League {
         this.seasonend = seasonend;
     }
 
+    @OneToMany(mappedBy = "league", fetch = FetchType.EAGER)
     public Set<Team> getTeams() {
         return teams;
     }
