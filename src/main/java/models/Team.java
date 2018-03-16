@@ -1,12 +1,16 @@
 package models;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="teams")
 public class Team {
 
     private int id;
     private String name;
+    private League league;
     private int founded;
     private String homestadium;
     private double salaryCap;
@@ -16,8 +20,9 @@ public class Team {
     public Team() {
     }
 
-    public Team(String name, int founded, String homestadium, double salaryCap) {
+    public Team(String name, League league, int founded, String homestadium, double salaryCap) {
         this.name = name;
+        this.league = league;
         this.founded = founded;
         this.homestadium = homestadium;
         this.salaryCap = salaryCap;
@@ -25,6 +30,9 @@ public class Team {
         this.players = new HashSet<Player>();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -33,6 +41,7 @@ public class Team {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -41,6 +50,17 @@ public class Team {
         this.name = name;
     }
 
+    @ManyToOne
+    @JoinColumn(name="league_id", nullable = false)
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(League league) {
+        this.league = league;
+    }
+
+    @Column(name="founded")
     public int getFounded() {
         return founded;
     }
@@ -49,6 +69,7 @@ public class Team {
         this.founded = founded;
     }
 
+    @Column(name="home_stadium")
     public String getHomestadium() {
         return homestadium;
     }
@@ -57,6 +78,7 @@ public class Team {
         this.homestadium = homestadium;
     }
 
+    @Column(name="salary_cap")
     public double getSalaryCap() {
         return salaryCap;
     }
@@ -65,6 +87,7 @@ public class Team {
         this.salaryCap = salaryCap;
     }
 
+    @OneToOne(mappedBy ="team", fetch = FetchType.EAGER)
     public Manager getManager() {
         return manager;
     }
@@ -73,6 +96,7 @@ public class Team {
         this.manager = manager;
     }
 
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     public Set<Player> getPlayers() {
         return players;
     }
