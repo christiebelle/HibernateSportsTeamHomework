@@ -1,7 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.GregorianCalendar;
 
+@Entity
+@Table(name="managers")
 public class Manager {
 
     private int id;
@@ -20,6 +23,9 @@ public class Manager {
         this.salary = salary;
     }
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -28,6 +34,7 @@ public class Manager {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -36,6 +43,8 @@ public class Manager {
         this.name = name;
     }
 
+    @OneToOne
+    @Column(name="team")
     public Team getTeam() {
         return team;
     }
@@ -44,6 +53,7 @@ public class Manager {
         this.team = team;
     }
 
+    @Column(name="hired_date")
     public GregorianCalendar getHired() {
         return hired;
     }
@@ -52,6 +62,7 @@ public class Manager {
         this.hired = hired;
     }
 
+    @Column(name="")
     public int getSalary() {
         return salary;
     }
