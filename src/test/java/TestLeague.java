@@ -27,6 +27,9 @@ public class TestLeague {
         GregorianCalendar seasonend = new GregorianCalendar(2018,4,7);
         league = new League("NHL", seasonstart, seasonend);
         DBHelper.save(league);
+
+        team = new Team("Philadelphia Flyers", league, 1967, "Wells Fargo Center", 75000000);
+        DBHelper.save(team);
     }
 
     @Test
