@@ -1,5 +1,9 @@
 package db;
 
+import models.League;
+import models.Manager;
+import models.Team;
+import models.Player;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
