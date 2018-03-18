@@ -17,8 +17,8 @@ public class TestLeague {
 
     @After
     public void tearDown() throws Exception {
-        DBHelper.delete(league);
         DBHelper.delete(team);
+        DBHelper.delete(league);
     }
 
     @Before
@@ -27,9 +27,6 @@ public class TestLeague {
         GregorianCalendar seasonend = new GregorianCalendar(2018,4,7);
         league = new League("NHL", seasonstart, seasonend);
         DBHelper.save(league);
-
-        team = new Team("Philadelphia Flyers", league, 1967, "Wells Fargo Center", 75000000);
-        DBHelper.save(team);
     }
 
     @Test
@@ -39,6 +36,8 @@ public class TestLeague {
 
     @Test
     public void testLeagueHasTeams() {
+        team = new Team("Philadelphia Flyers", league, 1967, "Wells Fargo Center", 75000000);
+        DBHelper.save(team);
         assertEquals(1, league.getTeams().size());
     }
 }
