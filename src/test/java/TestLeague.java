@@ -36,4 +36,9 @@ public class TestLeague {
     public void testLeagueName() {
         assertEquals("NHL", league.getName());
     }
+
+    @Test
+    public void testLeagueHasTeams() {
+        assertEquals(1, league.getTeams().size());
+    }
 }
