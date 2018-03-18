@@ -87,7 +87,7 @@ public class Team {
         this.salaryCap = salaryCap;
     }
 
-    @OneToOne(mappedBy ="team", fetch = FetchType.EAGER)
+    @Column(name="manager")
     public Manager getManager() {
         return manager;
     }
