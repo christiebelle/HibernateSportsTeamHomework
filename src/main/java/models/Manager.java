@@ -62,7 +62,7 @@ public class Manager {
         this.hired = hired;
     }
 
-    @Column(name="")
+    @Column(name="salary")
     public int getSalary() {
         return salary;
     }
