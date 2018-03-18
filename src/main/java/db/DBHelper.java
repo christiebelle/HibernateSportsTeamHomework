@@ -58,7 +58,8 @@ public static <T> T getUnique(Criteria criteria) {
     } finally {
         session.close();
     }
-}
+    return result;
+    }
 
     public static <T> List<T> getAll(Class classType){
         session = HibernateUtil.getSessionFactory().openSession();

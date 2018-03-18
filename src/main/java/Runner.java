@@ -42,7 +42,9 @@ public class Runner {
         Player player1 = new Player("Claude Giroux", team1, Position.CENTRE, 28, 9000000, contractstart, contractend);
         DBHelper.save(player1);
 
-        Player player2 = new Player("Mike Fisher", team2, Position.CENTRE, 12, 1000000, GregorianCalendar contractstart = new GregorianCalendar(2018,1,31), GregorianCalendar contractend = new GregorianCalendar(2018,4,30));
+        GregorianCalendar contractstart5 = new GregorianCalendar(2018,1,31);
+        GregorianCalendar contractend5 = new GregorianCalendar(2018,4,30);
+        Player player2 = new Player("Mike Fisher", team2, Position.CENTRE, 12, 1000000, contractstart5, contractend5);
         DBHelper.save(player2);
 
         GregorianCalendar contractstart1 = new GregorianCalendar(2018,1,31);
