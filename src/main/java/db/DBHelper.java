@@ -9,7 +9,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
-import sun.tools.java.ClassType;
 
 import java.util.List;
 
@@ -47,18 +46,19 @@ public static <T> List<T> getList(Criteria criteria) {
     return results;
 }
 
-public static <T> T getUnique(Criteria criteria){
+public static <T> T getUnique(Criteria criteria) {
     T result = null;
-    try{
+    try {
         transaction = session.beginTransaction();
         result = (T) criteria.uniqueResult();
         transaction.commit();
-    }catch (HibernateException ex){
+    } catch (HibernateException ex) {
         transaction.rollback();
         ex.printStackTrace();
-    }finally{
+    } finally {
         session.close();
     }
+}
 
     public static <T> List<T> getAll(Class classType){
         session = HibernateUtil.getSessionFactory().openSession();
@@ -71,7 +71,7 @@ public static <T> T getUnique(Criteria criteria){
     public static <T> T find(Class classtype, int id){
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
-        Criteria cr = session.createCriteria(classType);
+        Criteria cr = session.createCriteria(classtype);
         cr.add(Restrictions.eq("id", id));
         result = getUnique(cr);
         return result;
@@ -87,7 +87,7 @@ public static <T> T getUnique(Criteria criteria){
             transaction.rollback();
             ex.printStackTrace();
         }finally{
-            session.close():
+            session.close();
         }
     }
 
