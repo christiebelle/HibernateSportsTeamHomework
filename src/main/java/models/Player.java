@@ -3,8 +3,11 @@ package models;
 import enums.Availability;
 import enums.Position;
 
+import javax.persistence.*;
 import java.util.GregorianCalendar;
 
+@Entity
+@Table(name="players")
 public class Player {
 
     private int id;
@@ -31,6 +34,10 @@ public class Player {
         this.contractend = contractend;
     }
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -39,6 +46,7 @@ public class Player {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -47,6 +55,8 @@ public class Player {
         this.name = name;
     }
 
+    @ManyToOne
+    @JoinColumn(name="team_id", nullable = false)
     public Team getTeam() {
         return team;
     }
@@ -55,6 +65,7 @@ public class Player {
         this.team = team;
     }
 
+    @Column(name="position")
     public Position getPosition() {
         return position;
     }
@@ -63,6 +74,7 @@ public class Player {
         this.position = position;
     }
 
+    @Column(name="shirt_number")
     public int getShirtnum() {
         return shirtnum;
     }
@@ -71,6 +83,7 @@ public class Player {
         this.shirtnum = shirtnum;
     }
 
+    @Column(name="salary")
     public double getSalary() {
         return salary;
     }
@@ -79,6 +92,7 @@ public class Player {
         this.salary = salary;
     }
 
+    @Column(name="availablity")
     public Availability getAvailable() {
         return available;
     }
@@ -87,6 +101,7 @@ public class Player {
         this.available = available;
     }
 
+    @Column(name="contract_start_date")
     public GregorianCalendar getContractstart() {
         return contractstart;
     }
@@ -95,6 +110,7 @@ public class Player {
         this.contractstart = contractstart;
     }
 
+    @Column(name="contract_end_date")
     public GregorianCalendar getContractend() {
         return contractend;
     }
