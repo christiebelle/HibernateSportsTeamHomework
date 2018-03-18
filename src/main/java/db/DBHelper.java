@@ -105,4 +105,13 @@ public static <T> T getUnique(Criteria criteria) {
             session.close();
         }
     }
+
+    public static <T> List<T> getPlayersByTeam(Class classtype, int id){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> results = null;
+        Criteria cr = session.createCriteria(classtype);
+        cr.add(Restrictions.idEq(id));
+        results = getList(cr);
+        return results;
+    }
 }

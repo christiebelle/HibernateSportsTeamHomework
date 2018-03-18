@@ -43,7 +43,7 @@ public class Manager {
         this.name = name;
     }
 
-    @OneToOne(mappedBy = "team_id", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "manager", fetch = FetchType.EAGER)
     public Team getTeam() {
         return team;
     }

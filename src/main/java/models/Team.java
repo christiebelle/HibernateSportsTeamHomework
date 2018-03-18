@@ -87,7 +87,7 @@ public class Team {
         this.salaryCap = salaryCap;
     }
 
-    @Column(name="manager")
+    @OneToOne
     public Manager getManager() {
         return manager;
     }

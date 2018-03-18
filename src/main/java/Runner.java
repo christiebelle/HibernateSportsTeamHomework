@@ -6,6 +6,7 @@ import models.Player;
 import models.Team;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Runner {
 
@@ -66,5 +67,7 @@ public class Runner {
         GregorianCalendar contractend4 = new GregorianCalendar(2018,4,30);
         Player player6 = new Player("James Van Riemsdyk", team3, Position.LEFTWING, 25, 4250000, contractstart4, contractend4 );
         DBHelper.save(player6);
+
+
     }
 }
